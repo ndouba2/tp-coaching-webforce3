@@ -95,9 +95,23 @@ Dans votre VM (fournie), faire les instructions du fichier
 Allez dans chatGPT et tapez :  
      **code ansible de l'installation de docker**
 
+
 ## Exercice 7: Compare les codes Ansible 
-Comparez mon code ```install_docker_ubuntu.yml``` avec le code généré par chatGPT
+Comparez mon code ```install_docker_ubuntu.yml``` avec le code généré par chatGPT  
+Ajouter des commentaires 
 
 
+## Exercice 8: Create du Dockerfile
+Générer avec chatGPT le dockerfile de l'application blogs  
+Allez dans chatGPT et tapez :      
+     **écrit un dockerfile ubuntu web flask python**  
+Faire la mise au point du script généré
+Tapez la commande pour voir la taille de l'image docker 
+
+Allez dans chatGPT et tapez :      
+     **écrit un dockerfile alpine web flask python**
+Faire la mise au point du script généré
+Tapez la commande pour voir la taille de l'image docker  
 
 
+Choisir l'image la plus petite pour la suite du TP 
