@@ -101,17 +101,31 @@ Comparez mon code ```install_docker_ubuntu.yml``` avec le code généré par cha
 Ajouter des commentaires 
 
 
-## Exercice 8: Create du Dockerfile
+## Exercice 8: Comparez les Dockerfiles
 Générer avec chatGPT le dockerfile de l'application blogs  
 Allez dans chatGPT et tapez :      
-     **écrit un dockerfile ubuntu web flask python**  
-Faire la mise au point du script généré
+     **écrit un dockerfile ubuntu web flask python**    
+Faire la mise au point du script généré  
 Tapez la commande pour voir la taille de l'image docker 
 
 Allez dans chatGPT et tapez :      
-     **écrit un dockerfile alpine web flask python**
-Faire la mise au point du script généré
+     **écrit un dockerfile alpine web flask python**  
+Faire la mise au point du script généré  
 Tapez la commande pour voir la taille de l'image docker  
 
+Choisir le dockerfile de l'image la plus petite pour la suite du TP 
 
-Choisir l'image la plus petite pour la suite du TP 
+## Exercice 9: Démarrez votre container Web Flask Serveur
+Précisez la commande pour démarrer le container sur le port 30101  
+Vérifier les logs de votre container  
+Modifier votre application pour que les données de logging soient placées dans le 
+disque de stockage de l'exercice 3  
+Troubleshooter l'application et le container   
+Vérifier si votre application fonctionne dans un navigateur  
+
+
+
+
+
+
+
