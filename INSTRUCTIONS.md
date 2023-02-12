@@ -1,4 +1,4 @@
-# Instructions pour le TP 
+# Instructions pour les TP 
 
 Forker dans votre compte github le repo https://github.com/crunchy-devops/tp-coaching-webforce3.git  
 Faire un git clone de ce repo en local dans votre directory c:\projet  
@@ -84,8 +84,19 @@ Exemple : fermer le port 5000 et autoriser le port 30101
 Vérifier l'application Web sur ces ports
 
 
+# TP sur Docker
 
+**Créez un compte chatGPT sur https://openai.com/blog/chatgpt/**  
+**Mettez vous sur la branche git nommée docker**  
 
+Dans votre VM (fournie), faire les instructions du fichier    
+   ~/tp-coaching-webforce3/DOCKER.md
+
+Allez dans chatGPT et tapez :  
+     **code ansible de l'installation de docker**
+
+## Exercice 7: Compare les codes Ansible 
+Comparez mon code ```install_docker_ubuntu.yml``` avec le code généré par chatGPT
 
 
 
