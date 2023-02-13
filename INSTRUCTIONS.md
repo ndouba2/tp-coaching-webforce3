@@ -135,13 +135,20 @@ Faire un ```cd ~/tp-coaching-web-force3```
 Allez dans chatGPT et tapez :      
      **écrit un docker-compose de 3 containers et un network**
 
-Dans ce script généré, changez l'image du container web, elle doit etre celle de l'exercice 5    
+Dans ce script généré nommé docker-compose.yml, changez l'image du container web, elle doit etre celle de l'exercice 5    
 L'image de la base de données postgresql doit etre celle de **bitnami/postgresql**  
 suivre les intructions pour utiliser postgresql  
-L'image du container app doit etre **dpage/pgadmin4**  
+L'image du container app doit etre **dpage/pgadmin4**     
+Vérifier les logs de chaque containers.     
+
+## Exercice 11: Persistence des donnees votre script docker-compose.yml
+Mettez en place la persistence des données des containers: web et db.    
+Le container web doit écrire les data de log dans la directory log sur le disque de l'exercice 3.
+La base de données postgresql doit etre dans un docker volume nommé **data** dans la directory log sur le disque de l'exercice 3.
+Démarrez les containers et vérifiez les logs des containers
+Faire la mise au point
 
 
-## Exercice 11: Mise au point de votre script docker-compose
 
 
 
