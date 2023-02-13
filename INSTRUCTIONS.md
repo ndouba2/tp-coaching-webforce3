@@ -139,14 +139,48 @@ Dans ce script généré nommé docker-compose.yml, changez l'image du container
 L'image de la base de données postgresql doit etre celle de **bitnami/postgresql**  
 suivre les intructions pour utiliser postgresql  
 L'image du container app doit etre **dpage/pgadmin4**     
-Vérifier les logs de chaque containers.     
+Vérifier les logs de chaque containers. 
+---
+### Port forwarding a preciser dans votre docker-compose  
+container web
+```yaml
+ports:
+      - "30101:5000"
+```
+container db
+```yaml
+ports:
+      - "30432:5432"
+```
+container app
+```yaml
+ports:
+      - "30500:80"
+```
 
-## Exercice 11: Persistence des donnees votre script docker-compose.yml
-Mettez en place la persistence des données des containers: web et db.    
-Le container web doit écrire les data de log dans la directory log sur le disque de l'exercice 3.
+## Exercice 11: Persistance des données dans votre script docker-compose.yml
+Mettez en place la persistance des données des containers: web et db.    
+Le container web doit écrire les data de log dans la directory log sur le disque défini de l'exercice 3.
 La base de données postgresql doit etre dans un docker volume nommé **data** dans la directory log sur le disque de l'exercice 3.
 Démarrez les containers et vérifiez les logs des containers
-Faire la mise au point
+Faire la mise au point, attention erreurs de permission et de proprietaire des directories 
+---
+Tips:   
+Le volume docker pour le container db doit etre défini comme cela: 
+```yaml
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/ubuntu/tp-coaching-webforce3/log
+```
+Le mapping de volume pour le container db est :  
+```yaml
+volumes:
+      - data:/bitnami/postgresql
+```
 
 
 
