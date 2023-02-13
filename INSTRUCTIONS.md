@@ -1,4 +1,6 @@
-# Instructions pour les TP 
+# Instructions pour les TPs
+
+---
 
 Forker dans votre compte github le repo https://github.com/crunchy-devops/tp-coaching-webforce3.git  
 Faire un git clone de ce repo en local dans votre directory c:\projet  
@@ -86,11 +88,12 @@ Vérifier l'application Web sur ces ports
 
 # TP sur Docker
 
+---
 **Créez un compte chatGPT sur https://openai.com/blog/chatgpt/**  
 **Mettez vous sur la branche git nommée docker**  
 
 Dans votre VM (fournie), faire les instructions du fichier    
-   ~/tp-coaching-webforce3/DOCKER.md
+   ~/tp-coaching-webforce3/install_docker/DOCKER.md
 
 Allez dans chatGPT et tapez :  
      **code ansible de l'installation de docker**
@@ -102,30 +105,43 @@ Ajouter des commentaires
 
 
 ## Exercice 8: Comparez les Dockerfiles
-Générer avec chatGPT le dockerfile de l'application blogs  
+Générer avec chatGPT le dockerfile de l'application blogs.    
 Allez dans chatGPT et tapez :      
      **écrit un dockerfile ubuntu web flask python**    
-Faire la mise au point du script généré  
-Tapez la commande pour voir la taille de l'image docker 
+Faire la mise au point du script généré.  
+Tapez la commande pour voir la taille de l'image docker.   
 
 Allez dans chatGPT et tapez :      
      **écrit un dockerfile alpine web flask python**  
-Faire la mise au point du script généré  
-Tapez la commande pour voir la taille de l'image docker  
+Faire la mise au point du script généré.  
+Tapez la commande pour voir la taille de l'image docker.    
 
-Choisir le dockerfile de l'image la plus petite pour la suite du TP 
+Choisir le dockerfile de l'image la plus petite pour la suite du TP.   
 
 ## Exercice 9: Démarrez votre container Web Flask Serveur
-Précisez la commande pour démarrer le container sur le port 30101  
-Vérifier les logs de votre container  
+Précisez la commande pour démarrer le container nommé **web** sur le port 30101.    
+Vérifier les logs de votre container.   
 Modifier votre application pour que les données de logging soient placées dans le 
-disque de stockage de l'exercice 3  
-Troubleshooter l'application et le container   
-Vérifier si votre application fonctionne dans un navigateur  
+disque de stockage de l'exercice 3.    
+Troubleshooter l'application et le container.     
+Vérifier si votre application fonctionne dans un navigateur, port 30101.  
+---
+Dans votre VM (fournie), faire les instructions du fichier    
+   ~/tp-coaching-webforce3/projet-docker-compose/DOCKER_COMPOSE.md
 
 
+## Exercice 10: Créer un fichier docker-compose de 3 containers
+Faire un ```cd ~/tp-coaching-web-force3```  
+Allez dans chatGPT et tapez :      
+     **écrit un docker-compose de 3 containers et un network**
+
+Dans ce script généré, changez l'image du container web, elle doit etre celle de l'exercice 5    
+L'image de la base de données postgresql doit etre celle de **bitnami/postgresql**  
+suivre les intructions pour utiliser postgresql  
+L'image du container app doit etre **dpage/pgadmin4**  
 
 
+## Exercice 11: Mise au point de votre script docker-compose
 
 
 
