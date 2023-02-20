@@ -105,6 +105,7 @@ Ajouter des commentaires
 
 
 ## Exercice 8: Comparez les Dockerfiles
+
 Générer avec chatGPT le dockerfile de l'application blogs.    
 Allez dans chatGPT et tapez :      
      **écrit un dockerfile ubuntu web flask python**    
@@ -119,6 +120,7 @@ Tapez la commande pour voir la taille de l'image docker.
 Choisir le dockerfile de l'image la plus petite pour la suite du TP.   
 
 ## Exercice 9: Démarrez votre container Web Flask Serveur
+
 Précisez la commande pour démarrer le container nommé **web** sur le port 30101.    
 Vérifier les logs de votre container.   
 Modifier votre application pour que les données de logging soient placées dans le 
@@ -131,6 +133,7 @@ Dans votre VM (fournie), faire les instructions du fichier
 
 
 ## Exercice 10: Créer un fichier docker-compose de 3 containers
+
 Faire un ```cd ~/tp-coaching-web-force3```  
 Allez dans chatGPT et tapez :      
      **écrit un docker-compose de 3 containers et un network**
@@ -142,6 +145,7 @@ L'image du container app doit etre **dpage/pgadmin4**
 Vérifier les logs de chaque containers. 
 ---
 ### Port forwarding a preciser dans votre docker-compose  
+
 container web
 ```yaml
 ports:
@@ -158,7 +162,8 @@ ports:
       - "30500:80"
 ```
 
-## Exercice 11: Persistance des données dans votre script docker-compose.yml
+## Exercice 11: Persistance des données dans votre script docker-compose.yml 
+
 Mettez en place la persistance des données des containers: web et db.    
 Le container web doit écrire les data de log dans la directory log sur le disque défini de l'exercice 3.
 La base de données postgresql doit etre dans un docker volume nommé **data** dans la directory log sur le disque de l'exercice 3.
