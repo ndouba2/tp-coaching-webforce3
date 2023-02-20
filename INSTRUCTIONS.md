@@ -187,7 +187,31 @@ volumes:
       - data:/bitnami/postgresql
 ```
 
+# TP Kubernetes with kind
 
+## Install the cluster
+```shell
+cd   # back to the home directory
+docker ps   # check the docker containers
+docker --version  # check docker version 
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+kind version  # check the version of kind 
+cd ~/tp-coaching-webforce3/kind # change to the project
+kind create cluster --name=webforce3  --config kind-config.yml # install kind kubernetes cluster # Notice: should be version 1.25.3
+# work in a container to keep my vm/desktop clean
+docker run -it --rm --name work -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host alpine sh
+```
 
-
+## Install kubectl
+```shell
+apk add --no-cache --virtual .build-deps make bash gcc musl-dev openssl go curl vim # Install useful packages
+cd /root
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" # Download a version of kubectl
+install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl # install kubectl
+kubectl version --client # Check 
+alias k='kubectl'  # useful alias
+k get nodes  # Check 
+```
 
