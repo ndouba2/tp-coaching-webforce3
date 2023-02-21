@@ -89,6 +89,7 @@ Vérifier l'application Web sur ces ports
 # TP sur Docker
 
 ---
+**Creez un compte DockerHub https://hub.docker.com/**
 **Créez un compte chatGPT sur https://openai.com/blog/chatgpt/**  
 **Mettez vous sur la branche git nommée docker**  
 
@@ -131,18 +132,23 @@ Vérifier si votre application fonctionne dans un navigateur, port 30101.
 Dans votre VM (fournie), faire les instructions du fichier    
    ~/tp-coaching-webforce3/projet-docker-compose/DOCKER_COMPOSE.md
 
+## Exercice 10 : Mettre votre image Docker dans Docker Hub
 
-## Exercice 10: Créer un fichier docker-compose de 3 containers
+Tagger l'image avec votre compte Docker hub, faire un ```docker login```
+et ```docker push```  
+Testez votre image mise dans docker hub en demarrant un nouveau container avec ```docker run``` 
+
+## Exercice 11: Créer un fichier docker-compose de 3 containers
 
 Faire un ```cd ~/tp-coaching-web-force3```  
 Allez dans chatGPT et tapez :      
      **écrit un docker-compose de 3 containers et un network**
 
-Dans ce script généré nommé docker-compose.yml, changez l'image du container web, elle doit etre celle de l'exercice 5    
+Dans ce script généré que vous nommez docker-compose.yml, changez l'image du container web, elle doit etre celle de l'exercice 5      
 L'image de la base de données postgresql doit etre celle de **bitnami/postgresql**  
 suivre les intructions pour utiliser postgresql  
 L'image du container app doit etre **dpage/pgadmin4**     
-Vérifier les logs de chaque containers. 
+Vérifier les logs de chaque container. 
 ---
 ### Port forwarding a preciser dans votre docker-compose  
 
@@ -162,13 +168,16 @@ ports:
       - "30500:80"
 ```
 
+### Installation de docker-compose
+Appliquez les commandes du fichier project-docker-compose/DOCKER_COMPOSE.md  
+
 ## Exercice 11: Persistance des données dans votre script docker-compose.yml 
 
 Mettez en place la persistance des données des containers: web et db.    
 Le container web doit écrire les data de log dans la directory log sur le disque défini de l'exercice 3.
 La base de données postgresql doit etre dans un docker volume nommé **data** dans la directory log sur le disque de l'exercice 3.
 Démarrez les containers et vérifiez les logs des containers
-Faire la mise au point, attention erreurs de permission et de proprietaire des directories 
+Faire la mise au point, attention aux erreurs de permission et de proprietaire des directories 
 ---
 Tips:   
 Le volume docker pour le container db doit etre défini comme cela: 
