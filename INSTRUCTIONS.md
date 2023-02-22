@@ -120,7 +120,7 @@ Tapez la commande pour voir la taille de l'image docker.
 
 Choisir le dockerfile de l'image la plus petite pour la suite du TP.   
 
-## Exercice 9: Démarrez votre container Web Flask Serveur
+## Exercice 9: Démarrez votre container Web Flask Serveur  
 
 Précisez la commande pour démarrer le container nommé **web** sur le port 30101.    
 Vérifier les logs de votre container.   
@@ -142,7 +142,7 @@ Testez votre image mise dans docker hub en demarrant un nouveau container avec `
 
 Faire un ```cd ~/tp-coaching-web-force3```  
 Allez dans chatGPT et tapez :      
-     **écrit un docker-compose de 3 containers et un network**  
+     **écrit un docker-compose de 3 containers et un network**    
 
 Dans ce script généré que vous nommez docker-compose.yml, changez l'image du container web, elle doit etre celle de l'exercice 5      
 L'image de la base de données postgresql doit etre celle de **bitnami/postgresql**  
@@ -171,7 +171,7 @@ ports:
 ### Installation de docker-compose
 Appliquez les commandes du fichier project-docker-compose/DOCKER_COMPOSE.md  
 
-## Exercice 12: Persistance des données dans votre script docker-compose.yml 
+## Exercice 12: Persistance des données dans votre script docker-compose.yml  
 
 Mettez en place la persistance des données des containers: web et db.    
 Le container web doit écrire les data de log dans la directory log sur le disque défini de l'exercice 3.
