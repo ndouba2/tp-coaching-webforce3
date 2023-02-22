@@ -226,7 +226,7 @@ alias k='kubectl'  # useful alias
 k get nodes  # Kubernetes command for checking the cluster
 ```
 
-## Exercice Kubernetes 1
+## Exercice Kubernetes 1 : Porter le container web dans kubernetes
 
 Ecrire le Deployment yaml code pour l'application blogs.  
 **Tips:** Voir l'application Kompose https://kompose.io/ pour obtenir un exemple de scripts    
@@ -244,3 +244,69 @@ spec:
       targetPort: 5000
       nodePort: 30950
 ```
+
+Testez avec votre navigateur avec le port 30950, qui doit etre ouvert par le pare-feu 
+
+## Exercice Kubernetes 2 : Installer EDB-postgresql dans kubernetes 
+Dans votre container work 
+Nous allons utiliser un script kubernetes/yaml fourni par la societe EDB pour installer Postgresql.   
+```shell
+kubectl apply -f https://get.enterprisedb.io/cnp/postgresql-operator-1.18.0.yaml # Run the operator
+kubectl get deploy -n postgresql-operator-system postgresql-operator-controller-manager # check 
+k get pod -A 
+```
+### Create postgresql cluster 
+Creer ce fichier nomme cluster-example.yaml avec le code suivant:
+```yaml
+# Example of PostgreSQL cluster
+apiVersion: postgresql.k8s.enterprisedb.io/v1
+kind: Cluster
+metadata:
+  name: cluster-example
+spec:
+  instances: 3
+
+  # Example of rolling update strategy:
+  # - unsupervised: automated update of the primary once all
+  #                 replicas have been upgraded (default)
+  # - supervised: requires manual supervision to perform
+  #               the switchover of the primary
+  primaryUpdateStrategy: unsupervised
+
+  # Require 1Gi of space
+  storage:
+    size: 1Gi
+```
+Appliquer le script dans kubernetes: 
+```shell
+k apply -f cluster-example.yaml
+```
+Faire des ```k get pod``` plusieurs fois de suite pour voir que les pods cluster-example-1, 2 et 3 sont disponibles. 
+
+**Retrouver la version de Postgresql dans le fichier yaml du cluster**   
+commande 
+```shell
+k get cluster cluster-example -o yaml
+```
+
+
+### Obtenir les Secrets
+```shell
+k get Secret cluster-example-app -o yaml # find the secret
+# select username
+echo "YXBw" | base64 -d # get the username
+echo "YTHxxxx...xxx" | base64 -d # get the password
+kubectl port-forward service/cluster-example-rw 3000:5432 --address='0.0.0.0'
+```
+**Verifier la connectivite a la base donnees avec goland de jetbrains avec l'onglet a droit nomme database**
+
+
+
+
+
+
+
+
+
+
+
