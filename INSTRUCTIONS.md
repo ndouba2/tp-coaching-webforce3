@@ -210,21 +210,37 @@ kind version  # check the version of kind
 cd ~/tp-coaching-webforce3/kind # change to the project
 kind create cluster --name=webforce3  --config kind-config.yml # install kind kubernetes cluster # Notice: should be version 1.25.3
 # work in a container to keep my vm/desktop clean
-docker run -it --rm --name work -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host alpine sh
+docker run -d -it --rm --name work -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host alpine sh
+docker exec -it work ash 
 ```
 
 ## Install kubectl
 ```shell
-# inside the container named work , type alpine 
+# inside the container named work , beware it's alpine OS 
 apk add --no-cache --virtual .build-deps make bash gcc musl-dev openssl go curl vim # Install useful packages
 cd /root
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" # Download a version of kubectl
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl # install kubectl
-kubectl version --client # Check 
+kubectl version --short # Check 
 alias k='kubectl'  # useful alias
 k get nodes  # Kubernetes command for checking the cluster
 ```
 
 ## Exercice Kubernetes 1
 
-Ecrire le Deployment yaml code pour l'application blogs. 
+Ecrire le Deployment yaml code pour l'application blogs.  
+**Tips:** Voir l'application Kompose https://kompose.io/ pour obtenir un exemple de scripts    
+Dans le script web-deployment.yaml mettre votre docker hub image  
+Dans le script web-service.yaml modifier votre script en specifiant le NodePort identique a celui du Cluster    
+que vous pouvez voir dans le fichier kind-config.yml    
+Mettre le changement dans web-service.yaml
+```yaml
+...
+spec:
+  type: NodePort
+  ports:
+    - name: "5000"
+      port: 5000
+      targetPort: 5000
+      nodePort: 30950
+```
