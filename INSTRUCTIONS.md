@@ -298,7 +298,7 @@ echo "YXBw" | base64 -d # get the username
 echo "YTHxxxx...xxx" | base64 -d # get the password
 kubectl port-forward service/cluster-example-rw 3000:5432 --address='0.0.0.0'
 ```
-**Verifier la connectivite a la base donnees avec goland de jetbrains avec l'onglet a droit nomme database**
+**Verifier la connectivite a la base donnees avec goland de jetbrains avec l'onglet a droite nomme database**
 
 
 
