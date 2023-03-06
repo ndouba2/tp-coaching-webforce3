@@ -133,5 +133,34 @@ Créer un fichier ansible-3.yaml qui automatise l'exercice 6 ci-dessus.
 3. ouvrir le port 30101  
 Testez votre script
 
+# TP Puppet 
+Connectez vous a la VM/host de rebond fournie, entrez ```sh connect.sh```
 
 
+# Exercice Puppet 1 :
+The default environment is production.  
+```shell
+puppet config print
+puppet config print config
+puppet config print manifest --section master --environment production
+ 
+#vi /etc/puppetlabs/code/environments/production/manifests/1-puppet.pp
+``` 
+Placez les 4 scripts: 1-puppet.pp, 2-puppet.pp, 3-puppet.pp, 4-puppet.pp
+dans /etc/puppetlabs/code/environments/production/manifests/ 
+
+1. fichier 1-puppet.pp est le script qui doit mettre à jour les packages de la machine puppetmaster   
+2. fichier 2-puppet.pp: Vérifier la version de python3  
+3. fichier 3-puppet.pp: Créer un alias dans ~/.bashrc  
+4. fichier 4-puppet.pp: installer le package pip 
+
+
+# Exercice Puppet 2 : 
+Recherche le disk additionnel et le formatter
+
+ 
+
+# Exercice Puppet 3 :
+1. Activez le pare-feu
+2. Bloquez le port 5000
+3. Autoriser le port 30101
