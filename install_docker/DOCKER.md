@@ -1,7 +1,7 @@
 # Installation de docker avec ansible 
 
 ## See Network Topology
-![Topology](screenshots/topology.png)
+![Topo](screenshots/topology.png)
 
 ## Connect to the Gateway
 set up Deployment, Configuration to the gateway in Rubymine
