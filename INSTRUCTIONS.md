@@ -313,6 +313,21 @@ dans /etc/puppetlabs/code/environments/production/manifests/
 2. fichier 2-puppet.pp: Vérifier la version de python3  
 3. fichier 3-puppet.pp: Créer un alias dans ~/.bashrc  
 4. fichier 4-puppet.pp: installer le package pip 
+# TP Puppet 
+Connectez vous a la VM/host de rebond fournie, entrez ```sh connect.sh```
+
+
+# Exercice Puppet 1 :
+The default environment is production.  
+```shell
+puppet config print
+puppet config print config
+puppet config print manifest --section master --environment production
+ 
+#vi /etc/puppetlabs/code/environments/production/manifests/1-puppet.pp
+``` 
+Placez les 4 scripts: 1-puppet.pp, 2-puppet.pp, 3-puppet.pp, 4-puppet.pp
+dans /etc/puppetlabs/code/environments/production/manifests/ 
 
 
 # Exercice Puppet 2 : 
