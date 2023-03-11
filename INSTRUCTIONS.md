@@ -291,6 +291,8 @@ export PGDATA={{ postgresql_data_dir }}
 export PATH=$PATH:{{ postgresql_bin_path }}
 ```
 
+---
+
 # TP Puppet 
 Connectez vous a la VM/host de rebond fournie, entrez ```sh connect.sh```
 
@@ -315,7 +317,6 @@ dans /etc/puppetlabs/code/environments/production/manifests/
 
 # Exercice Puppet 2 : 
 Recherche le disk additionnel et le formatter
-
  
 
 # Exercice Puppet 3 :
