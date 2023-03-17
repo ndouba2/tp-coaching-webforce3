@@ -80,12 +80,6 @@ Vérifier avec votre navigateur en utilisant l'url ```http://<ip_de_votre_vm>:30
 Vérifier que le fichier record.log existe bien dans la directory log    
 
 
-## Exercice 6  - Pare-feu  
-Trouvez la commande de gestion du firewall sous ubuntu 20.04
-Exemple : fermer le port 5000 et autoriser le port 30101
-Vérifier l'application Web sur ces ports
-
-
 # TP sur Docker
 
 ---
@@ -145,9 +139,9 @@ Allez dans chatGPT et tapez :
      **écrit un docker-compose de 3 containers et un network**
 
 Dans ce script généré que vous nommez docker-compose.yml, changez l'image du container web, elle doit etre celle de l'exercice 5      
-L'image de la base de données postgresql doit etre celle de **bitnami/postgresql**  
-suivre les intructions pour utiliser postgresql  
-L'image du container app doit etre **dpage/pgadmin4**     
+L'image de la base de données mariadb doit etre celle de **bitnami/mariadb**  
+suivre les instructions dans docker hub pour utiliser mariadb  
+L'image du container app doit etre **bitnami/phpmyadmin**     
 Vérifier les logs de chaque container. 
 ---
 ### Port forwarding a preciser dans votre docker-compose  
