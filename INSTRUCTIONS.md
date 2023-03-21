@@ -87,7 +87,7 @@ Vérifier que le fichier record.log existe bien dans la directory log
 **Créez un compte chatGPT sur https://openai.com/blog/chatgpt/**  
 **Mettez vous sur la branche git nommée docker**  
 
-Dans votre VM (fournie), faire les instructions du fichier    
+Dans votre VM (fournie), faire les instructions du fichier   si docker n'est pas installe 
    ~/tp-coaching-webforce3/install_docker/DOCKER.md
 
 Allez dans chatGPT et tapez :  
@@ -187,7 +187,7 @@ volumes:
 Le mapping de volume pour le container db est :  
 ```yaml
 volumes:
-      - data:/bitnami/postgresql
+      - data:/bitnami/mariadb
 ```
 
 
