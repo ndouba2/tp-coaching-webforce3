@@ -1,4 +1,6 @@
-# Instructions pour le TP 
+# Instructions pour les TPs
+
+---
 
 Forker dans votre compte github le repo https://github.com/crunchy-devops/tp-coaching-webforce3.git  
 Faire un git clone de ce repo en local dans votre directory c:\projet  
@@ -78,13 +80,115 @@ Vérifier avec votre navigateur en utilisant l'url ```http://<ip_de_votre_vm>:30
 Vérifier que le fichier record.log existe bien dans la directory log    
 
 
-## Exercice 6  - Pare-feu  
-Trouvez la commande de gestion du firewall sous ubuntu 20.04
-Exemple : fermer le port 5000 et autoriser le port 30101
-Vérifier l'application Web sur ces ports
+# TP sur Docker
+
+---
+**Creez un compte DockerHub https://hub.docker.com/**
+**Créez un compte chatGPT sur https://openai.com/blog/chatgpt/**  
+**Mettez vous sur la branche git nommée docker**  
+
+Dans votre VM (fournie), faire les instructions du fichier   si docker n'est pas installe 
+   ~/tp-coaching-webforce3/install_docker/DOCKER.md
+
+Allez dans chatGPT et tapez :  
+     **code ansible de l'installation de docker**
 
 
+## Exercice 7: Compare les codes Ansible 
+Comparez mon code ```install_docker_ubuntu.yml``` avec le code généré par chatGPT  
+Ajouter des commentaires 
 
+
+## Exercice 8: Comparez les Dockerfiles
+
+Générer avec chatGPT le dockerfile de l'application blogs.    
+Allez dans chatGPT et tapez :      
+     **écrit un dockerfile ubuntu web flask python**    
+Faire la mise au point du script généré.  
+Tapez la commande pour voir la taille de l'image docker.   
+
+Allez dans chatGPT et tapez :      
+     **écrit un dockerfile alpine web flask python**  
+Faire la mise au point du script généré.  
+Tapez la commande pour voir la taille de l'image docker.    
+
+Choisir le dockerfile de l'image la plus petite pour la suite du TP.   
+
+## Exercice 9: Démarrez votre container Web Flask Serveur
+
+Précisez la commande pour démarrer le container nommé **web** sur le port 30101.    
+Vérifier les logs de votre container.   
+Modifier votre application pour que les données de logging soient placées dans le 
+disque de stockage de l'exercice 3.    
+Troubleshooter l'application et le container.     
+Vérifier si votre application fonctionne dans un navigateur, port 30101.  
+---
+Dans votre VM (fournie), faire les instructions du fichier    
+   ~/tp-coaching-webforce3/projet-docker-compose/DOCKER_COMPOSE.md
+
+## Exercice 10 : Mettre votre image Docker dans Docker Hub
+
+Tagger l'image avec votre compte Docker hub, faire un ```docker login```
+et ```docker push```  
+Testez votre image mise dans docker hub en demarrant un nouveau container avec ```docker run``` 
+
+## Exercice 11: Créer un fichier docker-compose de 3 containers
+
+Faire un ```cd ~/tp-coaching-web-force3```  
+Allez dans chatGPT et tapez :      
+     **écrit un docker-compose de 3 containers et un network**
+
+Dans ce script généré que vous nommez docker-compose.yml, changez l'image du container web, elle doit etre celle de l'exercice 5      
+L'image de la base de données mariadb doit etre celle de **bitnami/mariadb**  
+suivre les instructions dans docker hub pour utiliser mariadb  
+L'image du container app doit etre **bitnami/phpmyadmin**     
+Vérifier les logs de chaque container. 
+---
+### Port forwarding a preciser dans votre docker-compose  
+
+container web
+```yaml
+ports:
+      - "30101:5000"
+```
+container db
+```yaml
+ports:
+      - "30432:5432"
+```
+container app
+```yaml
+ports:
+      - "30500:80"
+```
+
+### Installation de docker-compose
+Appliquez les commandes du fichier project-docker-compose/DOCKER_COMPOSE.md  
+
+## Exercice 11: Persistance des données dans votre script docker-compose.yml 
+
+Mettez en place la persistance des données des containers: web et db.    
+Le container web doit écrire les data de log dans la directory log sur le disque défini de l'exercice 3.
+La base de données postgresql doit etre dans un docker volume nommé **data** dans la directory log sur le disque de l'exercice 3.
+Démarrez les containers et vérifiez les logs des containers
+Faire la mise au point, attention aux erreurs de permission et de proprietaire des directories 
+---
+Tips:   
+Le volume docker pour le container db doit etre défini comme cela: 
+```yaml
+volumes:
+  data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/ubuntu/tp-coaching-webforce3/log
+```
+Le mapping de volume pour le container db est :  
+```yaml
+volumes:
+      - data:/bitnami/mariadb
+```
 
 
 
