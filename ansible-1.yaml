@@ -1,0 +1,23 @@
+---
+- name: ansible
+  hosts: localhost
+  become: true 
+  tasks:
+    - name: mise à jour des packages 
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: verifier la version de python3
+      ansible.builtin.command:
+       cmd: python3 --version
+
+    - name: installer le package pip
+      ansible.builtin.apt:
+       name: pip
+    
+    - name: creer un alias
+      ansible.builtin.lineinfile:
+       path : ~/.bashrc
+       line: 'alias python="python3"'       
+       state: present	
