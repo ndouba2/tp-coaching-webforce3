@@ -1,0 +1,17 @@
+---
+- name: activer le firewall 
+  community.general.ufw:
+    state: enabled
+    policy: allow
+    
+- name: ouvrir le port 30101
+  community.general.ufw:
+    rule: allow
+    port: 30101
+    proto: tcp
+
+- name: fermer le port 5000
+  community.general.ufw:
+    rule: denete
+    port: 5000      
+    proto: tcp
