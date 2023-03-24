@@ -1,9 +1,10 @@
-# tp-coaching-webforce3
-Instruction pour la session de coachin
 
-#installer la derniere version d'Ansible
+# TP Ansible
 
-(venv) augustin@docker-11:~/tp-coaching-webforce3$ ansible --version
+# Installation avec virtualenv
+# Iinstaller la derniere version d'Ansible
+
+(venv) augustin@docker-11:~/tp-coaching-webforce3$  ansible --version
 ansible [core 2.13.8]
   config file = None
   configured module search path = ['/home/augustin/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -16,3 +17,4 @@ ansible [core 2.13.8]
   
   
   
+  # TP ansible 1
