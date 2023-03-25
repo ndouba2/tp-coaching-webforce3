@@ -295,6 +295,26 @@ export PATH=$PATH:{{ postgresql_bin_path }}
 
 # TP Puppet 
 Connectez vous a la VM/host de rebond fournie, entrez ```sh connect.sh```
+vous devez etre sur la branche puppet
+## Pre-requis
+### Lancer Portainer si il n'est pas present
+```shell
+docker volume create portainer_data
+docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v portainer_data:/data portainer/portainer-ce:latest
+```
+
+### Lancer un container puppetmaster
+```shell
+cd  # vous etes dans la home directory 
+# create un lien symbolique 
+ln -s main tp-coaching-webforce3 lien symbolique # lien symbolique nommee main  
+cd main
+docker run -d --name puppetmaster --hostname puppet  -v .:/etc/puppetlabs/code/environments/main puppet/puppetserver # container
+
+
+
 
 
 # Exercice Puppet 1 :
