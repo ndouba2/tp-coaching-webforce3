@@ -309,28 +309,31 @@ docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always \
 ```shell
 cd  # vous etes dans la home directory 
 # create un lien symbolique 
-ln -s main tp-coaching-webforce3 lien symbolique # lien symbolique nommee main  
+ln -s  tp-coaching-webforce3 main  # lien symbolique nommee main  
 cd main
 docker run -d --name puppetmaster --hostname puppet  -v .:/etc/puppetlabs/code/environments/main puppet/puppetserver # container
-
-
-
-
-
-# Exercice Puppet 1 :
-The default environment is production.  
+```
+### Install le module apt
 ```shell
-puppet config print
-puppet config print config
-puppet config print manifest --section master --environment production
- 
-#vi /etc/puppetlabs/code/environments/production/manifests/1-puppet.pp
-``` 
-Placez les 4 scripts: 1-puppet.pp, 2-puppet.pp, 3-puppet.pp, 4-puppet.pp
-dans /etc/puppetlabs/code/environments/production/manifests/ 
+docker exec -it puppetmaster puppet module install puppetlabs-apt --environment main
+docker exec -it puppetmaster puppet module install saz-ssh --environment main
 
-1. fichier 1-puppet.pp est le script qui doit mettre à jour les packages de la machine puppetmaster   
-2. fichier 2-puppet.pp: Vérifier la version de python3  
+```
+## First manifest
+in your main directory
+```shell
+mkdir manifests
+cd manifest
+vi site.pp
+# copy how to run a apt update with the module apt
+# save 
+docker exec -it puppetmaster apt install gnupg2 # package is missing inside puppetmaster container.  
+docker exec -it puppetmaster puppet agent -t --environment main
+```
+# Exercice Puppet 1 :
+Nous   
+```shell
+fichier 2-puppet.pp: Vérifier la version de python3  
 3. fichier 3-puppet.pp: Créer un alias dans ~/.bashrc  
 4. fichier 4-puppet.pp: installer le package pip 
 # TP Puppet 
