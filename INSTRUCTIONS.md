@@ -297,7 +297,7 @@ export PATH=$PATH:{{ postgresql_bin_path }}
 Connectez vous a la VM/host de rebond fournie, entrez ```sh connect.sh```
 vous devez etre sur la branche puppet
 ## Pre-requis
-### Lancer Portainer si il n'est pas present
+### Lancer Portainer s'il n'est pas present
 ```shell
 docker volume create portainer_data
 docker run -d -p 32125:8000 -p 32126:9443 --name portainer --restart=always \
