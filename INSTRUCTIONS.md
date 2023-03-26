@@ -316,7 +316,7 @@ docker run -d --name puppetmaster --hostname puppet  -v .:/etc/puppetlabs/code/e
 ### Install le module apt
 ```shell
 docker exec -it puppetmaster puppet module install puppetlabs-apt --environment main
-docker exec -it puppetmaster puppet module install saz-ssh --environment main
+
 
 ```
 ## First manifest
@@ -327,7 +327,7 @@ cd manifest
 vi site.pp
 # copy how to run a apt update with the module apt
 # save 
-docker exec -it puppetmaster apt install gnupg2 # package is missing inside puppetmaster container.  
+docker exec -it puppetmaster apt -y install gnupg2 # package is missing inside puppetmaster container.  
 docker exec -it puppetmaster puppet agent -t --environment main
 ```
 # Exercice Puppet 1 :
