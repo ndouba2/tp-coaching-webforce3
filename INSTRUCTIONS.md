@@ -325,39 +325,55 @@ in your main directory
 mkdir manifests
 cd manifest
 vi site.pp
-# copy how to run a apt update with the module apt
+Exercice 1 *- insert a code on how to run an apt update with the module puppetlabs/apt # see puppet forge
 # save 
+docker exec -it puppetmaster puppet agent -t --environment main # apt update
 docker exec -it puppetmaster apt -y install gnupg2 # package is missing inside puppetmaster container.  
-docker exec -it puppetmaster puppet agent -t --environment main
+docker exec -it puppetmaster puppet agent -t --environment main # apt update again with no error
+
+Exercice 2 *- insert a code on how to install python3 package # see puppet forge
 ```
-# Exercice Puppet 1 :
-Nous   
+
+## Install a custom fact
+For checking the python3 version we have to set up a custom fact 
 ```shell
-fichier 2-puppet.pp: Vérifier la version de python3  
-3. fichier 3-puppet.pp: Créer un alias dans ~/.bashrc  
-4. fichier 4-puppet.pp: installer le package pip 
-# TP Puppet 
-Connectez vous a la VM/host de rebond fournie, entrez ```sh connect.sh```
+cd
+cd main
+cd modules
+sudo mkdir -p solution/lib/facter
+cd solution/lib/facter/
+sudo vi python_version.rb
+```
+Add the following code 
+```ruby
+# python_version.rb
 
-
-# Exercice Puppet 1 :
-The default environment is production.  
+Facter.add('python-version') do
+  setcode do
+    Facter::Core::Execution.execute('/usr/bin/python3 -V ')
+  end
+end
+```
+In the directory modules/solution create a directory manifests
 ```shell
-puppet config print
-puppet config print config
-puppet config print manifest --section master --environment production
- 
-#vi /etc/puppetlabs/code/environments/production/manifests/1-puppet.pp
-``` 
-Placez les 4 scripts: 1-puppet.pp, 2-puppet.pp, 3-puppet.pp, 4-puppet.pp
-dans /etc/puppetlabs/code/environments/production/manifests/ 
+sudo mkdir manifests
+cd manifests
+sudo vi init.pp
+```
+# added following code 
+```shell
+class solution {
+  
+}
+```
+Dans main/manifests ouvrir le fichier site.pp et copier a la suite
+```puppet
+include solution
+notify { 'result':
+  message => " Python is ${facts['python-version']}";
+}
+```
 
+## Exercice-3: Insert an alias for using python3
+Using the function Puppet file_line for changing your .bashrc in the container puppetmaster
 
-# Exercice Puppet 2 : 
-Recherche le disk additionnel et le formatter
- 
-
-# Exercice Puppet 3 :
-1. Activez le pare-feu
-2. Bloquez le port 5000
-3. Autoriser le port 30101
